@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SchoolMangmentSystemCore.Models.teacher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">All Teacher Info</h1>
+<hr  class="bg-primary" style="width:100px"/>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary" >Create New Teacher</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mobile)
+            </th>
+            <th>No of Students</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)  {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mobile)
+            </td>
+            <td>@ViewBag.NumOfStudents</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TeacherId" class="btn btn-success">Edit</a>
+                @*<a asp-action="Details" asp-route-id="@item.TeacherId" class="btn btn-info">Details</a>*@
+                <a asp-action="Delete" asp-route-id="@item.TeacherId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
